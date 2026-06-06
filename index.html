@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🇩🇪 Deutsch · Тесты · красный, фиолетовый, синий</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #0a0a2a, #010018);
+            font-family: 'Inter', sans-serif;
+            color: #f0eef7;
+            position: relative;
+            overflow-x: hidden;
+            padding: 2rem 1.5rem;
+        }
+
+        /* простой фон с цветными акцентами */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(219, 62, 140, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(155, 48, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 35, 149, 0.15) 0%, transparent 60%);
+        }
+
+        /* звёздочки */
+        .star {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: starTwinkle 4s infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes starTwinkle {
+            0% { opacity: 0.1; transform: scale(0.6); }
+            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 6px #DB3E8C, 0 0 3px #9B30FF; }
+        }
+
+        /* немецкие иконки */
+        .de-icon {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            opacity: 0.25;
+            animation: floatIcon 20s infinite alternate;
+        }
+        @keyframes floatIcon {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -25px); }
+        }
+        .brandenburg { top: 3%; left: 1%; animation-duration: 18s; }
+        .tv-tower { top: 12%; right: 2%; animation-duration: 22s; }
+        .pretzel { bottom: 8%; right: 3%; animation-duration: 24s; }
+        .beer { bottom: 12%; left: 3%; animation-duration: 20s; }
+
+        /* основной контейнер */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(5, 5, 25, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(219, 62, 140, 0.6);
+            box-shadow: 0 0 30px rgba(155, 48, 255, 0.3);
+        }
+
+        /* верхняя полоска флага (чёрный, красный, золотой) */
+        .flag-strip {
+            display: flex;
+            justify-content: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+        .stripe {
+            width: 70px;
+            height: 10px;
+            border-radius: 20px;
+        }
+        .stripe.black { background: #1a1a2e; box-shadow: 0 0 12px #F6C45C; }
+        .stripe.red { background: #DB3E8C; box-shadow: 0 0 12px #DB3E8C; }
+        .stripe.gold { background: #F6C45C; box-shadow: 0 0 12px #F6C45C; }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #DB3E8C, #9B30FF, #0A2F8A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.3rem;
+        }
+        .sub {
+            text-align: center;
+            color: #FFAFEB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .quote {
+            background: rgba(26, 26, 46, 0.6);
+            border-left: 5px solid #DB3E8C;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-style: italic;
+            color: #FFE6F0;
+            font-size: 0.9rem;
+        }
+        .quote small {
+            display: block;
+            font-size: 0.75rem;
+            color: #9B30FF;
+            margin-top: 5px;
+        }
+
+        .blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .card {
+            background: rgba(10, 8, 40, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1.2rem 0.5rem;
+            text-align: center;
+            border: 1px solid #9B30FF;
+            transition: 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #DB3E8C;
+            box-shadow: 0 0 20px #DB3E8C;
+            background: rgba(219, 62, 140, 0.2);
+        }
+        .card span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #DB3E8C, #9B30FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card small {
+            display: block;
+            color: #FFAFEB;
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+        .exam-card {
+            background: linear-gradient(135deg, #0A2F8A, #DB3E8C);
+            border: none;
+        }
+        .exam-card span {
+            background: white;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #BBAAFF;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(219, 62, 140, 0.4);
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .main-container { padding: 1rem; }
+            .blocks { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="de-icon brandenburg">🏛️</div>
+    <div class="de-icon tv-tower">📡</div>
+    <div class="de-icon pretzel">🥨</div>
+    <div class="de-icon beer">🍺</div>
+
+    <div class="main-container">
+        <div class="flag-strip">
+            <div class="stripe black"></div>
+            <div class="stripe red"></div>
+            <div class="stripe gold"></div>
+        </div>
+        <h1><i class="fas fa-language"></i> Deutsch · Тесты</h1>
+        <div class="sub">🇩🇪 грамматика · предлоги · местоимения 🇩🇪</div>
+
+        <div class="quote" id="quoteBox">
+            <i class="fas fa-quote-left"></i> « Übung macht den Meister. »
+            <small>Mashq ustani yetishtiradi.</small>
+        </div>
+
+        <div class="blocks" id="blocksGrid"></div>
+
+        <div class="footer">
+            ✨ случайный порядок · прогресс · разбор ошибок · Enter ✨<br>
+            красный · фиолетовый · синий
+        </div>
+    </div>
+
+    <script>
+        // звёзды
+        for (let i = 0; i < 150; i++) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+            let sz = Math.random() * 2.5 + 1;
+            star.style.width = sz + 'px';
+            star.style.height = sz + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = 3 + Math.random() * 4 + 's';
+            document.body.appendChild(star);
+        }
+
+        // цитаты немецкие + узбекский перевод
+        const quotes = [
+            { de: "« Übung macht den Meister. »", uz: "Mashq ustani yetishtiradi." },
+            { de: "« Berlin ist arm, aber sexy. »", uz: "Berlin kambag'al, ammo jozibali." },
+            { de: "« Wer fremde Sprachen nicht kennt, weiß nichts von seiner eigenen. » — Goethe", uz: "Chet tillarni bilmagan o'z tilini bilmaydi." },
+            { de: "« Die Grenzen meiner Sprache sind die Grenzen meiner Welt. » — Wittgenstein", uz: "Tilimning chegarasi dunyomning chegarasidir." },
+            { de: "« Lernen ist wie Rudern gegen den Strom. »", uz: "O‘rganish – oqimga qarshi eshkak eshish." },
+            { de: "« Aller Anfang ist schwer. »", uz: "Har ishning boshi og'ir." }
+        ];
+        let qIdx = 0;
+        function rotateQuote() {
+            const q = quotes[qIdx];
+            const box = document.getElementById('quoteBox');
+            if (box) box.innerHTML = `<i class="fas fa-quote-left"></i> ${q.de}<br><small>${q.uz}</small>`;
+            qIdx = (qIdx + 1) % quotes.length;
+        }
+        rotateQuote();
+        setInterval(rotateQuote, 10000);
+
+        const blocks = [
+            { name: "📘 1 - 50", file: "quiz-de-1-50.html" },
+            { name: "📙 51 - 100", file: "quiz-de-51-100.html" },
+            { name: "📗 101 - 150", file: "quiz-de-101-150.html" },
+            { name: "📕 151 - 200", file: "quiz-de-151-200.html" }
+        ];
+        const container = document.getElementById('blocksGrid');
+        blocks.forEach(block => {
+            const card = document.createElement('a');
+            card.href = block.file;
+            card.className = 'card';
+            card.innerHTML = `<span>${block.name}</span><small><i class="fas fa-question-circle"></i> случайные вопросы</small>`;
+            container.appendChild(card);
+        });
+        const examCard = document.createElement('a');
+        examCard.href = 'exam-de.html';
+        examCard.className = 'card exam-card';
+        examCard.innerHTML = `<span>🎓 ЭКЗАМЕН 🎓</span><small>25 случайных вопросов</small>`;
+        container.appendChild(examCard);
+    </script>
+</body>
+  </html>
