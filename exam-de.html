@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>🇩🇪 Deutsch · PRÜFUNG · 25 zufällige Fragen</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #0a0a2a, #010018);
+            font-family: 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+            min-height: 100vh;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(219, 62, 140, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(155, 48, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 35, 149, 0.15) 0%, transparent 60%);
+        }
+        .star {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: starTwinkle 4s infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes starTwinkle {
+            0% { opacity: 0.1; transform: scale(0.6); }
+            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 6px #DB3E8C, 0 0 3px #9B30FF; }
+        }
+        .de-icon {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            opacity: 0.25;
+            animation: floatIcon 20s infinite alternate;
+        }
+        @keyframes floatIcon {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -25px); }
+        }
+        .brandenburg { top: 3%; left: 1%; animation-duration: 18s; }
+        .tv-tower { top: 12%; right: 2%; animation-duration: 22s; }
+        .pretzel { bottom: 8%; right: 3%; animation-duration: 24s; }
+        .beer { bottom: 12%; left: 3%; animation-duration: 20s; }
+        .quiz-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(5, 5, 25, 0.7);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(219, 62, 140, 0.6);
+            box-shadow: 0 0 30px rgba(155, 48, 255, 0.3);
+            z-index: 10;
+        }
+        h1 {
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            background: linear-gradient(135deg, #DB3E8C, #9B30FF, #0A2F8A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .total-badge {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            color: #FFAFEB;
+            border: 1px solid #DB3E8C;
+        }
+        .quote-box {
+            background: rgba(26, 26, 46, 0.6);
+            border-left: 5px solid #DB3E8C;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1rem;
+            margin: 0.8rem 0;
+            text-align: center;
+            font-style: italic;
+            color: #FFE6F0;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .rules {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 1.2rem;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            color: #FFAFEB;
+            border: 1px solid #9B30FF;
+        }
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+        .stat {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            font-weight: bold;
+            border: 1px solid #9B30FF;
+            color: #ffffff;
+        }
+        .progress-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .progress-bar-bg {
+            flex: 1;
+            background: #1a1a3a;
+            height: 1rem;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #DB3E8C, #9B30FF, #0A2F8A);
+            transition: width 0.3s;
+        }
+        .progress-text {
+            background: #00000066;
+            padding: 0.1rem 0.6rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            color: #F6C45C;
+        }
+        .question-card {
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            border: 1px solid #9B30FF;
+        }
+        .question-text {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.8rem;
+            border-radius: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px #9B30FF;
+            word-break: break-word;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+        .option {
+            background: rgba(26, 26, 62, 0.8);
+            border: 1px solid #9B30FF;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: 0.1s;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .option.selected {
+            background: rgba(219, 62, 140, 0.5);
+            border-color: #F6C45C;
+            box-shadow: 0 0 12px #DB3E8C;
+        }
+        .feedback {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 1.5rem;
+            padding: 0.6rem;
+            margin: 0.8rem 0;
+            text-align: center;
+            border-left: 5px solid #DB3E8C;
+            color: #FFAFEB;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .button-group {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0.6rem;
+        }
+        .btn {
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(95deg, #0A2F8A, #9B30FF);
+            color: white;
+            transition: 0.1s;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .btn-primary {
+            background: linear-gradient(95deg, #DB3E8C, #9B30FF);
+            box-shadow: 0 0 12px #DB3E8C;
+        }
+        .restart-btn {
+            background: linear-gradient(95deg, #F6C45C, #0A2F8A);
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .review-section {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid #DB3E8C;
+        }
+        .mistake-item {
+            background: #1a173d;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 8px solid #DB3E8C;
+            color: #FFAFEB;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+        }
+        footer {
+            text-align: center;
+            font-size: clamp(0.65rem, 3vw, 0.75rem);
+            margin-top: 1rem;
+            color: #BBAAFF;
+        }
+        @media (max-width: 600px) {
+            .quiz-wrapper { padding: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="de-icon brandenburg">🏛️</div>
+    <div class="de-icon tv-tower">📡</div>
+    <div class="de-icon pretzel">🥨</div>
+    <div class="de-icon beer">🍺</div>
+    <script>
+        for (let i = 0; i < 150; i++) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+            let sz = Math.random() * 2.5 + 1;
+            star.style.width = sz + 'px';
+            star.style.height = sz + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = 3 + Math.random() * 4 + 's';
+            document.body.appendChild(star);
+        }
+    </script>
+    <div class="quiz-wrapper" id="app">
+        <div class="top-bar">
+            <h1>🇩🇪 PRÜFUNG · 25 zufällige Fragen</h1>
+            <span class="total-badge" id="totalSpan">📘 всего: 25</span>
+        </div>
+        <div class="quote-box" id="quoteBox">✨ Prüfung – Teste dein Wissen! ✨</div>
+        <div class="rules">
+            🚀 Правила: Выбери вариант, нажми Enter для проверки, ещё раз Enter – следующий вопрос. Кнопка «Перезапустить» – в любой момент.<br>
+            🎲 Каждый раз тест выбирает 25 случайных вопросов из всех 200.
+        </div>
+        <div id="startScreen" style="text-align:center; padding:1.5rem 0;">
+            <button class="btn btn-primary" id="startBtn" style="font-size:clamp(1.2rem, 5vw, 1.8rem);">🇩🇪 ПРЮФУНГ СТАРТЕН ✨</button>
+        </div>
+        <div id="quizInterface" class="hidden">
+            <div class="stats-grid">
+                <div class="stat">✅ Верно: <span id="correctCount">0</span></div>
+                <div class="stat">❌ Ошибки: <span id="mistakeCount">0</span></div>
+                <div class="stat">🎯 Точность: <span id="accuracyPercent">0</span>%</div>
+                <div class="stat">📝 Отвечено: <span id="answeredCount">0</span></div>
+                <div class="stat">🌙 Осталось: <span id="remainingCount">25</span></div>
+            </div>
+            <div class="progress-area">
+                <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="progress-text" id="progressFraction">0/25</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text" id="questionDisplay"></div>
+                <div class="options" id="optionsContainer"></div>
+                <div class="feedback" id="feedbackArea">✨ Выбери ответ → «Проверить» ✨</div>
+                <div class="button-group">
+                    <button class="btn btn-primary" id="checkBtn">✅ Проверить (Enter)</button>
+                    <button class="btn" id="nextBtn">➡ Следующий (Enter)</button>
+                </div>
+            </div>
+            <button class="btn restart-btn" id="restartBtn">🔄 Экзамен заново</button>
+            <div id="reviewBlock" class="review-section hidden">
+                <h3 style="color:#DB3E8C;">📖 Разбор ошибок</h3>
+                <div id="mistakeList"></div>
+                <button class="btn restart-btn" id="restartReviewBtn">🔄 Пройти заново</button>
+            </div>
+        </div>
+        <footer>✨ красный · фиолетовый · синий · 25 zufällige Fragen ✨</footer>
+    </div>
+    <script>
+        // =============== ВСЕ 200 ВОПРОСОВ ===============
+        const allQuestions = [
+            // 1-50
+            { text: "Der Hund liegt ______ dem Tisch.", options: ["unter", "auf", "oben", "ans"], correct: "unter" },
+            { text: "Das Buch liegt ______ dem Tisch.", options: ["auf", "im", "zwischen", "oben"], correct: "auf" },
+            { text: "Die Katze springt ______ den Tisch.", options: ["aufs", "auf", "an", "zwischen"], correct: "auf" },
+            { text: "Die Lampe hängt ______ dem Tisch.", options: ["auf", "über", "neben", "an"], correct: "über" },
+            { text: "Der Stuhl steht ______ dem Tisch.", options: ["neben", "über", "zwischen", "oben"], correct: "neben" },
+            { text: "Das Auto steht ______ dem Haus.", options: ["vor", "hintern", "in", "ans"], correct: "vor" },
+            { text: "Der Garten liegt ______ dem Haus.", options: ["vorn", "hinter", "auf", "über"], correct: "hinter" },
+            { text: "Das Bild hängt ______ der Wand.", options: ["an", "auf", "in", "über"], correct: "an" },
+            { text: "Die Kinder spielen ______ dem Garten.", options: ["auf", "im", "am", "über"], correct: "im" },
+            { text: "Der Ball liegt ______ dem Tisch und dem Stuhl.", options: ["über", "zwischen", "neben", "auf"], correct: "zwischen" },
+            { text: "Der Student setzt sich ______ den Tisch.", options: ["auf", "an", "zwischen", "oben"], correct: "an" },
+            { text: "Das Bild hängt ______ dem Sofa.", options: ["zwischen", "über", "in", "auf"], correct: "über" },
+            { text: "Die Tasche steht ______ dem Stuhl.", options: ["neben", "über", "auf", "am"], correct: "neben" },
+            { text: "Die Katze läuft ______ den Tisch.", options: ["aufs", "unter", "unten", "am"], correct: "unter" },
+            { text: "Die Studenten gehen ______ den Hörsaal.", options: ["in", "im", "auf", "an"], correct: "in" },
+            { text: "Die Studenten sitzen ______ dem Hörsaal.", options: ["in", "im", "auf", "an"], correct: "im" },
+            { text: "Das Flugzeug fliegt ______ der Stadt.", options: ["an", "über", "zwischen", "auf"], correct: "über" },
+            { text: "Der Hund läuft ______ das Haus.", options: ["an", "um", "über", "auf"], correct: "um" },
+            { text: "Die Lampe hängt ______ der Tür.", options: ["auf", "über", "neben", "in"], correct: "über" },
+            { text: "Die Bank steht ______ dem Baum.", options: ["über", "unter", "zwischen", "auf"], correct: "unter" },
+            { text: "Der Tisch steht ______ dem Fenster.", options: ["vor", "über", "auf", "zwischen"], correct: "vor" },
+            { text: "Das Sofa steht ______ der Wand.", options: ["auf", "an", "über", "zwischen"], correct: "an" },
+            { text: "Der Hund liegt ______ das Sofa.", options: ["an", "auf", "zwischen", "über"], correct: "auf" },
+            { text: "Die Katze schläft ______ dem Sofa.", options: ["aufs", "auf", "über", "zwischen"], correct: "auf" },
+            { text: "Das Café liegt ______ der Schule und der Bank.", options: ["über", "zwischen", "an", "auf"], correct: "zwischen" },
+            { text: "Die Kinder stehen ______ dem Lehrer.", options: ["über", "vor", "zwischen", "auf"], correct: "vor" },
+            { text: "Der Lehrer steht ______ den Schülern.", options: ["auf", "vor", "über", "an"], correct: "vor" },
+            { text: "Der Ball rollt ______ den Tisch.", options: ["über", "unter", "an", "zwischen"], correct: "unter" },
+            { text: "Das Bild hängt ______ zwei Fenstern.", options: ["an", "zwischen", "über", "auf"], correct: "zwischen" },
+            { text: "Der Hund liegt ______ dem Bett.", options: ["über", "unter", "an", "zwischen"], correct: "unter" },
+            { text: "Ich habe einen Bruder. ______ Bruder heißt Ali.", options: ["sein", "ihr", "mein", "unser"], correct: "mein" },
+            { text: "Du hast ein Auto. ______ Auto ist neu.", options: ["deine", "sein", "dein", "ihr"], correct: "dein" },
+            { text: "Er hat eine Schwester. ______ Schwester studiert in Berlin.", options: ["sein", "dein", "seine", "unsere"], correct: "seine" },
+            { text: "Sie hat einen Hund. ______ Hund ist sehr klein.", options: ["sein", "ihr", "ihre", "dein"], correct: "ihr" },
+            { text: "Wir haben ein Haus. ______ Haus ist groß.", options: ["unsere", "dein", "sein", "unser"], correct: "unser" },
+            { text: "Ihr habt eine Katze. ______ Katze schläft viel.", options: ["mein", "euer", "eure", "unsere"], correct: "eure" },
+            { text: "Sie (Plural) haben ein Kind. ______ Kind ist fünf Jahre alt.", options: ["sein", "ihre", "ihr", "dein"], correct: "ihr" },
+            { text: "Ich habe eine Tasche. ______ Tasche ist schwarz.", options: ["sein", "mein", "meine", "ihr"], correct: "meine" },
+            { text: "Du hast einen Freund. ______ Freund kommt aus Spanien.", options: ["mein", "deine", "dein", "ihr"], correct: "dein" },
+            { text: "Er hat ein Fahrrad. ______ Fahrrad ist neu.", options: ["mein", "seine", "sein", "ihr"], correct: "sein" },
+            { text: "Sie hat eine Schwester. ______ Schwester arbeitet hier.", options: ["sein", "ihr", "ihre", "deine"], correct: "ihre" },
+            { text: "Wir haben eine Wohnung. ______ Wohnung ist klein.", options: ["mein", "unser", "unsere", "eure"], correct: "unsere" },
+            { text: "Ihr habt einen Lehrer. ______ Lehrer ist nett.", options: ["mein", "euere", "euer", "unser"], correct: "euer" },
+            { text: "Sie (Plural) haben eine Schule. ______ Schule ist modern.", options: ["mein", "ihr", "ihre", "deine"], correct: "ihre" },
+            { text: "Ich habe ein Buch. ______ Buch ist interessant.", options: ["sein", "meine", "mein", "ihr"], correct: "mein" },
+            { text: "Du hast eine Schwester. ______ Schwester ist Studentin.", options: ["mein", "dein", "deine", "unsere"], correct: "deine" },
+            { text: "Er hat einen Vater. ______ Vater ist Arzt.", options: ["seine", "dein", "sein", "ihr"], correct: "sein" },
+            { text: "Sie hat ein Zimmer. ______ Zimmer ist groß.", options: ["ihre", "mein", "ihr", "dein"], correct: "ihr" },
+            { text: "Wir haben einen Garten. ______ Garten ist schön.", options: ["mein", "unsere", "unser", "euer"], correct: "unser" },
+            { text: "Ihr habt ein Auto. ______ Auto ist alt.", options: ["eure", "eurer", "euer", "unser"], correct: "euer" },
+            // 51-100
+            { text: "Ich sehe ______ Lehrer.", options: ["sein", "mein", "meinen", "ihr"], correct: "meinen" },
+            { text: "Du kennst ______ Freundin.", options: ["mein", "deinen", "deine", "unsere"], correct: "deine" },
+            { text: "Er besucht ______ Eltern.", options: ["mein", "sein", "seine", "unsere"], correct: "seine" },
+            { text: "Sie liebt ______ Hund.", options: ["mein", "sein", "ihren", "dein"], correct: "ihren" },
+            { text: "Wir sehen ______ Stadt.", options: ["mein", "sein", "unsere", "eure"], correct: "unsere" },
+            { text: "Ihr kennt ______ Nachbarn.", options: ["mein", "sein", "eure", "unsere"], correct: "eure" },
+            { text: "Sie (Plural) besuchen ______ Freunde.", options: ["mein", "sein", "ihre", "deine"], correct: "ihre" },
+            { text: "Ich suche ______ Schlüssel.", options: ["sein", "dein", "meinen", "ihr"], correct: "meinen" },
+            { text: "Du liest ______ Buch.", options: ["mein", "sein", "dein", "ihr"], correct: "dein" },
+            { text: "Wir lieben ______ Land.", options: ["mein", "sein", "unser", "euer"], correct: "unser" },
+            { text: "Das Geschenk ist von ______.", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
+            { text: "Der Lehrer spricht mit ______.", options: ["du", "dir", "dich", "dein"], correct: "dir" },
+            { text: "Ich helfe ______. (sie – Singular)", options: ["sie", "ihr", "ihre", "ihn"], correct: "ihr" },
+            { text: "Der Brief ist von ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Der Lehrer erklärt die Aufgabe ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich gebe das Buch ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "unser"], correct: "euch" },
+            { text: "Der Lehrer hilft ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Paket gehört ______. (ich)", options: ["mich", "mir", "mein", "meine"], correct: "mir" },
+            { text: "Ich schreibe einen Brief an ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dich" },
+            { text: "Das Buch gehört ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
+            { text: "Der Arzt spricht mit ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Die Lehrerin gibt die Hausaufgabe ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich erkläre die Aufgabe ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "uns"], correct: "euch" },
+            { text: "Der Professor fragt ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Geschenk ist von ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dir" },
+            { text: "Der Lehrer hilft ______. (ich)", options: ["mich", "mir", "mein", "meine"], correct: "mir" },
+            { text: "Das Buch gehört ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Ich schreibe eine Nachricht an ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
+            { text: "Der Lehrer erklärt die Regel ______. (wir)", options: ["euch", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich schicke eine Einladung an ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "mir"], correct: "euch" },
+            { text: "Der Professor erzählt ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Buch gefällt ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dir" },
+            { text: "Das Geschenk gehört ______. (ich)", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
+            { text: "Die Lehrerin spricht mit ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Ich erkläre die Aufgabe ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
+            { text: "Der Lehrer hilft ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich schreibe eine Nachricht an ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "ihnen"], correct: "euch" },
+            { text: "Der Professor antwortet ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Geschenk ist von ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Der Lehrer erklärt die Aufgabe ______. (ich)", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
+            { text: "Ich bleibe ______ zwei Tage in Berlin.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ dem Unterricht gehe ich nach Hause.", options: ["für", "vor", "nach", "mit"], correct: "nach" },
+            { text: "______ dem Essen trinke ich Kaffee.", options: ["nach", "vor", "für", "bei"], correct: "vor" },
+            { text: "Wir fahren ______ eine Woche nach Italien.", options: ["vor", "nach", "für", "mit"], correct: "für" },
+            { text: "______ der Arbeit treffe ich meine Freunde.", options: ["für", "vor", "nach", "bei"], correct: "nach" },
+            { text: "______ dem Frühstück gehe ich zur Universität.", options: ["nach", "vor", "für", "mit"], correct: "nach" },
+            { text: "Ich brauche das Buch ______ drei Tage.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ dem Film gehen wir essen.", options: ["für", "in", "nach", "bei"], correct: "nach" },
+            { text: "______ der Prüfung bin ich sehr nervös.", options: ["im", "vor", "für", "mit"], correct: "vor" },
+            { text: "Wir bleiben ______ einen Monat in Deutschland.", options: ["nach", "vor", "für", "bei"], correct: "für" },
+            // 101-150
+            { text: "______ der Schule mache ich Hausaufgaben.", options: ["für", "bei", "nach", "mit"], correct: "nach" },
+            { text: "______ dem Konzert essen wir im Restaurant.", options: ["bei", "vor", "für", "mit"], correct: "vor" },
+            { text: "Ich arbeite hier ______ zwei Jahre.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ dem Mittagessen trinken wir Tee.", options: ["für", "seit", "nach", "bei"], correct: "nach" },
+            { text: "______ dem Unterricht lese ich ein Buch.", options: ["im", "vor", "für", "mit"], correct: "vor" },
+            { text: "Wir fahren ______ drei Tage nach Samarkand.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ der Reise kaufe ich viele Dinge.", options: ["im", "vor", "für", "bei"], correct: "vor" },
+            { text: "______ dem Kurs gehe ich ins Café.", options: ["für", "im", "nach", "mit"], correct: "nach" },
+            { text: "Ich brauche das Zimmer ______ zwei Stunden.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ dem Test wiederholen wir die Grammatik.", options: ["im", "vor", "für", "bei"], correct: "vor" },
+            { text: "Ich gehe ______ meinen Freunden ins Kino.", options: ["ohne", "mit", "für", "an"], correct: "mit" },
+            { text: "Er trinkt Kaffee ______ Zucker.", options: ["mit", "ohne", "für", "nach"], correct: "ohne" },
+            { text: "Wir fahren ______ dem Bus zur Universität.", options: ["ohne", "mit", "für", "an"], correct: "mit" },
+            { text: "Sie geht ______ ihre Tasche aus dem Haus.", options: ["mit", "ohne", "für", "bei"], correct: "ohne" },
+            { text: "Ich lerne Deutsch ______ meinem Freund.", options: ["ohne", "mit", "nach", "für"], correct: "mit" },
+            { text: "Er kommt ______ seiner Schwester zur Party.", options: ["ohne", "mit", "für", "bei"], correct: "mit" },
+            { text: "Sie arbeitet ______ Pause.", options: ["mit", "ohne", "für", "nach"], correct: "ohne" },
+            { text: "Wir essen Pizza ______ Käse.", options: ["im", "mit", "für", "an"], correct: "mit" },
+            { text: "Das Kind geht ______ seinen Eltern in den Park.", options: ["ohne", "mit", "für", "nach"], correct: "mit" },
+            { text: "Ich trinke Tee ______ Milch.", options: ["nach", "ohne", "für", "bei"], correct: "ohne" },
+            { text: "______ bitte das Fenster! (öffnen – du)", options: ["öffnest", "öffnet", "öffne", "öffnen"], correct: "öffne" },
+            { text: "______ bitte ruhig! (sein – du)", options: ["bist", "sei", "seid", "sein"], correct: "sei" },
+            { text: "______ bitte die Tür! (zumachen – du)", options: ["zumachst", "mach zu", "macht zu", "zumachen"], correct: "mach zu" },
+            { text: "______ bitte langsamer! (sprechen – du)", options: ["sprichst", "sprich", "sprecht", "sprechen"], correct: "sprich" },
+            { text: "______ bitte hier! (warten – du)", options: ["wartest", "warte", "wartet", "warten"], correct: "warte" },
+            { text: "______ bitte leise! (sein – ihr)", options: ["seid", "sei", "sind", "sein"], correct: "seid" },
+            { text: "______ bitte schneller! (kommen – ihr)", options: ["kommt", "kommt", "komm", "kommen"], correct: "kommt" },
+            { text: "______ bitte das Buch! (lesen – Sie)", options: ["lese", "lest", "lesen Sie", "lies"], correct: "lesen Sie" },
+            { text: "______ bitte Platz! (nehmen – Sie)", options: ["nimm", "nehmt", "nehmen Sie", "nehme"], correct: "nehmen Sie" },
+            { text: "______ bitte morgen! (kommen – Sie)", options: ["komm", "kommt", "kommen Sie", "komme"], correct: "kommen Sie" },
+            { text: "Ich ______ gestern krank.", options: ["habe", "war", "bin", "hatte"], correct: "war" },
+            { text: "Wir ______ gestern keine Zeit.", options: ["waren", "hatten", "haben", "sind"], correct: "hatten" },
+            { text: "Er ______ gestern im Büro.", options: ["war", "hatte", "ist", "hat"], correct: "war" },
+            { text: "Ich ______ gestern viel Arbeit.", options: ["war", "hatte", "habe", "bin"], correct: "hatte" },
+            { text: "Sie ______ gestern sehr müde.", options: ["war", "hatte", "ist", "hat"], correct: "war" },
+            { text: "Wir ______ gestern Gäste.", options: ["waren", "hatten", "haben", "sind"], correct: "hatten" },
+            { text: "Ich ______ gestern ein Buch gelesen.", options: ["bin", "war", "habe", "hatte"], correct: "habe" },
+            { text: "Er ______ nach Berlin gefahren.", options: ["hat", "war", "ist", "hatte"], correct: "ist" },
+            { text: "Wir ______ einen Film gesehen.", options: ["sind", "waren", "haben", "hatten"], correct: "haben" },
+            { text: "Sie ______ gestern spät gekommen.", options: ["hat", "war", "ist", "hatte"], correct: "ist" },
+            { text: "Ich ______ gestern viel gelernt.", options: ["bin", "war", "habe", "hatte"], correct: "habe" },
+            { text: "Er ______ gestern zu Hause geblieben.", options: ["hat", "war", "ist", "hatte"], correct: "ist" },
+            { text: "Wir ______ gestern Pizza gegessen.", options: ["sind", "waren", "haben", "hatten"], correct: "haben" },
+            { text: "Sie ______ gestern krank.", options: ["hatte", "war", "ist", "hat"], correct: "war" },
+            { text: "Ich ______ gestern einen Brief geschrieben.", options: ["bin", "war", "habe", "hatte"], correct: "habe" },
+            { text: "Er ______ gestern viel Zeit.", options: ["war", "hatte", "hat", "ist"], correct: "hatte" },
+            { text: "Wir ______ gestern im Park gewesen.", options: ["haben", "waren", "sind", "hatten"], correct: "sind" },
+            { text: "Sie ______ gestern ihre Freunde besucht.", options: ["sind", "waren", "hat", "ist"], correct: "hat" },
+            { text: "Ich ______ gestern sehr glücklich.", options: ["hatte", "war", "habe", "bin"], correct: "war" },
+            { text: "Wir ______ gestern lange gearbeitet.", options: ["sind", "waren", "haben", "hatten"], correct: "haben" },
+            // 151-200
+            { text: "Der Lehrer sieht ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
+            { text: "Ich sehe ______. (du)", options: ["dir", "dich", "du", "dein"], correct: "dich" },
+            { text: "Sie kennt ______. (er)", options: ["ihm", "ihn", "sein", "er"], correct: "ihn" },
+            { text: "Ich kaufe ______. (das Buch)", options: ["sie", "es", "ihn", "mich"], correct: "es" },
+            { text: "Wir besuchen ______. (sie – Singular)", options: ["ihr", "sie", "ihnen", "er"], correct: "sie" },
+            { text: "Der Lehrer fragt ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich sehe ______ im Park. (ihr – Plural)", options: ["ihr", "euch", "euer", "eure"], correct: "euch" },
+            { text: "Der Lehrer grüßt ______. (sie – Plural)", options: ["ihr", "sie", "ihnen", "sie"], correct: "sie" },
+            { text: "Sie liebt ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
+            { text: "Ich höre ______. (du)", options: ["dir", "dich", "du", "dein"], correct: "dich" },
+            { text: "Wir treffen ______. (er)", options: ["ihm", "ihn", "sein", "er"], correct: "ihn" },
+            { text: "Ich sehe ______. (das Auto)", options: ["sie", "es", "ihn", "mich"], correct: "es" },
+            { text: "Er ruft ______. (sie – Singular)", options: ["ihr", "sie", "ihnen", "er"], correct: "sie" },
+            { text: "Der Lehrer erzählt ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich treffe ______ morgen. (ihr – Plural)", options: ["ihr", "euch", "euer", "eure"], correct: "euch" },
+            { text: "Wir besuchen ______ heute. (sie – Plural)", options: ["ihr", "sie", "ihnen", "sie"], correct: "sie" },
+            { text: "Er liebt ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
+            { text: "Ich sehe ______ im Café. (du)", options: ["dir", "dich", "du", "dein"], correct: "dich" },
+            { text: "Wir hören ______. (er)", options: ["ihm", "ihn", "sein", "er"], correct: "ihn" },
+            { text: "Ich kaufe ______. (das Geschenk)", options: ["sie", "es", "ihn", "mich"], correct: "es" },
+            { text: "Der Lehrer ruft ______. (sie – Singular)", options: ["ihr", "sie", "ihnen", "er"], correct: "sie" },
+            { text: "Er sieht ______ im Park. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich sehe ______ heute. (ihr – Plural)", options: ["ihr", "euch", "euer", "eure"], correct: "euch" },
+            { text: "Der Lehrer begrüßt ______. (sie – Plural)", options: ["ihr", "sie", "ihnen", "sie"], correct: "sie" },
+            { text: "Sie ruft ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
+            { text: "Ich liebe ______. (du)", options: ["dir", "dich", "du", "dein"], correct: "dich" },
+            { text: "Wir besuchen ______. (er)", options: ["ihm", "ihn", "sein", "er"], correct: "ihn" },
+            { text: "Ich sehe ______ auf dem Tisch. (das Buch)", options: ["sie", "es", "ihn", "mich"], correct: "es" },
+            { text: "Er kennt ______. (sie – Singular)", options: ["ihr", "sie", "ihnen", "er"], correct: "sie" },
+            { text: "Der Lehrer sieht ______ im Klassenzimmer. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Mein Deutsch ist ______ als früher.", options: ["gut", "besser", "am besten", "guter"], correct: "besser" },
+            { text: "Heute ist das Wetter ______ als gestern.", options: ["gut", "besser", "am besten", "guter"], correct: "besser" },
+            { text: "Dieses Restaurant ist ______ in der Stadt.", options: ["gut", "besser", "am besten", "bester"], correct: "am besten" },
+            { text: "Ich trinke Tee ______ als Kaffee.", options: ["gern", "lieber", "am liebsten", "mehr gern"], correct: "lieber" },
+            { text: "Am Wochenende schlafe ich ______ lange.", options: ["gern", "lieber", "am liebsten", "mehr gern"], correct: "am liebsten" },
+            { text: "Ich lese ______ Bücher als Zeitungen.", options: ["gern", "lieber", "am liebsten", "mehr"], correct: "lieber" },
+            { text: "Mein Bruder ist größer ______ ich.", options: ["wie", "als", "und", "oder"], correct: "als" },
+            { text: "Meine Schwester ist genauso groß ______ ich.", options: ["als", "wie", "und", "oder"], correct: "wie" },
+            { text: "Heute ist es wärmer ______ gestern.", options: ["wie", "als", "und", "oder"], correct: "als" },
+            { text: "Mein Auto ist so schnell ______ dein Auto.", options: ["als", "wie", "und", "oder"], correct: "wie" },
+            { text: "Deutsch ist ______ als Englisch für mich.", options: ["gut", "besser", "am besten", "guter"], correct: "besser" },
+            { text: "Dieser Student lernt ______ Deutsch als ich.", options: ["gern", "lieber", "am liebsten", "mehr gern"], correct: "lieber" },
+            { text: "Von allen Sprachen lerne ich Deutsch ______.", options: ["gern", "lieber", "am liebsten", "mehr"], correct: "am liebsten" },
+            { text: "Dieser Film ist ______ als der andere Film.", options: ["gut", "besser", "am besten", "guter"], correct: "besser" },
+            { text: "Dieses Café ist ______ in unserer Stadt.", options: ["gut", "besser", "am besten", "guter"], correct: "am besten" },
+            { text: "Ich höre Musik ______ als Radio.", options: ["gern", "lieber", "am liebsten", "mehr gern"], correct: "lieber" },
+            { text: "Mein Vater arbeitet mehr ______ ich.", options: ["wie", "als", "und", "oder"], correct: "als" },
+            { text: "Mein Freund ist genauso alt ______ ich.", options: ["als", "wie", "und", "oder"], correct: "wie" },
+            { text: "Heute fühle ich mich ______ als gestern.", options: ["gut", "besser", "am besten", "guter"], correct: "besser" },
+            { text: "Am Sonntag schlafe ich ______.", options: ["gern", "lieber", "am liebsten", "mehr gern"], correct: "am liebsten" }
+        ];
+
+        // ========== ЛОГИКА ЭКЗАМЕНА ==========
+        let examQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = [];
+        let quizActive = false;
+        let selectedAnswer = null;
+
+        const startScreenDiv = document.getElementById("startScreen");
+        const quizInterfaceDiv = document.getElementById("quizInterface");
+        const startBtn = document.getElementById("startBtn");
+        const questionDisplay = document.getElementById("questionDisplay");
+        const optionsContainer = document.getElementById("optionsContainer");
+        const feedbackArea = document.getElementById("feedbackArea");
+        const checkBtn = document.getElementById("checkBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const restartBtn = document.getElementById("restartBtn");
+        const restartReviewBtn = document.getElementById("restartReviewBtn");
+        const reviewBlock = document.getElementById("reviewBlock");
+        const mistakeListDiv = document.getElementById("mistakeList");
+        const correctSpan = document.getElementById("correctCount");
+        const mistakeSpan = document.getElementById("mistakeCount");
+        const accuracySpan = document.getElementById("accuracyPercent");
+        const answeredSpan = document.getElementById("answeredCount");
+        const remainingSpan = document.getElementById("remainingCount");
+        const progressFill = document.getElementById("progressFill");
+        const progressFraction = document.getElementById("progressFraction");
+        const totalSpan = document.getElementById("totalSpan");
+        const quoteBox = document.getElementById("quoteBox");
+
+        const quotes = [
+            "✨ Deutsch lernen – die Welt verstehen.",
+            "📖 Jede richtige Antwort bringt dich nach Berlin.",
+            "💪 Du schaffst das, du bist klug!",
+            "🎓 Lerne bunt, lebe wie in Berlin.",
+            "🏛️ Das Brandenburger Tor wartet auf dich!"
+        ];
+
+        let quoteInterval = null;
+
+        function updateQuote() {
+            const idx = Math.floor(Math.random() * quotes.length);
+            if (quoteBox) quoteBox.innerHTML = `✨ ${quotes[idx]} ✨`;
+        }
+
+        function startQuotes() {
+            if (quoteInterval) clearInterval(quoteInterval);
+            updateQuote();
+            quoteInterval = setInterval(updateQuote, 12000);
+        }
+
+        function stopQuotes() {
+            if (quoteInterval) clearInterval(quoteInterval);
+        }
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function shuffleOptions(q) {
+            let shuffledOptions = shuffleArray([...q.options]);
+            return { text: q.text, options: shuffledOptions, correct: q.correct };
+        }
+
+        function initExam() {
+            let shuffledAll = shuffleArray([...allQuestions]);
+            examQuestions = shuffledAll.slice(0, 25);
+            examQuestions = examQuestions.map(q => shuffleOptions(q));
+            currentIndex = 0;
+            userAnswers = new Array(examQuestions.length).fill(null);
+            selectedAnswer = null;
+            if (reviewBlock) reviewBlock.classList.add("hidden");
+            updateStats();
+            renderCurrentQuestion();
+        }
+
+        function updateStats() {
+            let correct = 0, wrong = 0, answeredCount = 0;
+            for (let i = 0; i < examQuestions.length; i++) {
+                if (userAnswers[i] !== null) {
+                    answeredCount++;
+                    if (userAnswers[i].isCorrect) correct++;
+                    else wrong++;
+                }
+            }
+            const accuracy = answeredCount === 0 ? 0 : Math.round((correct / answeredCount) * 100);
+            correctSpan.innerText = correct;
+            mistakeSpan.innerText = wrong;
+            accuracySpan.innerText = accuracy;
+            answeredSpan.innerText = answeredCount;
+            remainingSpan.innerText = examQuestions.length - answeredCount;
+            totalSpan.innerText = `📘 всего: ${examQuestions.length}`;
+            const percent = (answeredCount / examQuestions.length) * 100;
+            progressFill.style.width = percent + "%";
+            progressFraction.innerText = `${answeredCount}/${examQuestions.length}`;
+        }
+
+        function renderCurrentQuestion() {
+            if (!quizActive) return;
+            if (currentIndex >= examQuestions.length) {
+                finishExam();
+                return;
+            }
+            const q = examQuestions[currentIndex];
+            questionDisplay.innerText = q.text;
+            optionsContainer.innerHTML = "";
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement("div");
+                div.className = "option";
+                div.innerHTML = `<span style="font-weight:bold; margin-right:12px;">${letters[idx]}.</span> ${opt}`;
+                div.onclick = () => {
+                    if (userAnswers[currentIndex] !== null) {
+                        feedbackArea.innerHTML = "⚠️ Ты уже ответил на этот вопрос.";
+                        return;
+                    }
+                    document.querySelectorAll(".option").forEach(el => el.classList.remove("selected"));
+                    div.classList.add("selected");
+                    selectedAnswer = opt;
+                };
+                optionsContainer.appendChild(div);
+            });
+            if (userAnswers[currentIndex] !== null) {
+                const saved = userAnswers[currentIndex];
+                document.querySelectorAll(".option").forEach(el => {
+                    el.style.pointerEvents = "none";
+                    if (el.innerText.includes(saved.selected)) el.classList.add("selected");
+                });
+                feedbackArea.innerHTML = saved.isCorrect ? `✅ Верно: ${saved.selected}` : `❌ Неверно. Правильно: ${examQuestions[currentIndex].correct}`;
+                checkBtn.disabled = true;
+            } else {
+                document.querySelectorAll(".option").forEach(el => el.style.pointerEvents = "auto");
+                feedbackArea.innerHTML = "✨ Выбери ответ → «Проверить»";
+                checkBtn.disabled = false;
+            }
+            updateStats();
+        }
+
+        function checkAnswer() {
+            if (!quizActive) return;
+            if (userAnswers[currentIndex] !== null) {
+                feedbackArea.innerHTML = "Уже отвечено";
+                return;
+            }
+            if (!selectedAnswer) {
+                feedbackArea.innerHTML = "⚠️ Выбери вариант!";
+                return;
+            }
+            const q = examQuestions[currentIndex];
+            const isCorrect = (selectedAnswer === q.correct);
+            userAnswers[currentIndex] = { selected: selectedAnswer, isCorrect: isCorrect };
+            renderCurrentQuestion();
+        }
+
+        function nextQuestion() {
+            if (!quizActive) return;
+            if (userAnswers[currentIndex] === null) {
+                feedbackArea.innerHTML = "⚠️ Сначала ответь на вопрос.";
+                return;
+            }
+            if (currentIndex + 1 < examQuestions.length) {
+                currentIndex++;
+                selectedAnswer = null;
+                renderCurrentQuestion();
+            } else {
+                finishExam();
+            }
+        }
+
+        function finishExam() {
+            const total = examQuestions.length;
+            let correct = 0, wrong = 0;
+            for (let i = 0; i < total; i++) {
+                if (userAnswers[i] !== null && userAnswers[i].isCorrect) correct++;
+                else if (userAnswers[i] !== null && !userAnswers[i].isCorrect) wrong++;
+            }
+            const accuracy = total === 0 ? 0 : Math.round((correct / total) * 100);
+            let mistakesHtml = '<h3 style="color:#DB3E8C;">📖 Разбор ошибок</h3>';
+            let hasMistakes = false;
+            for (let i = 0; i < total; i++) {
+                if (userAnswers[i] !== null && !userAnswers[i].isCorrect) {
+                    hasMistakes = true;
+                    mistakesHtml += `<div class="mistake-item"><strong>❓ Вопрос ${i+1}:</strong> ${examQuestions[i].text}<br>👉 Твой ответ: ${userAnswers[i].selected}<br>✅ Правильный: ${examQuestions[i].correct}</div>`;
+                } else if (userAnswers[i] === null) {
+                    hasMistakes = true;
+                    mistakesHtml += `<div class="mistake-item"><strong>❓ Вопрос ${i+1}:</strong> ${examQuestions[i].text}<br>👉 Не отвечен<br>✅ Правильный: ${examQuestions[i].correct}</div>`;
+                }
+            }
+            if (!hasMistakes) mistakesHtml += '<p>✨ Идеально! Нет ошибок ✨</p>';
+            mistakeListDiv.innerHTML = mistakesHtml;
+            reviewBlock.classList.remove("hidden");
+            questionDisplay.innerText = `🎉 Экзамен завершён! 🎉\nПравильных: ${correct} из ${total}\nТочность: ${accuracy}%`;
+            optionsContainer.innerHTML = "";
+            feedbackArea.innerHTML = "";
+            checkBtn.disabled = true;
+            nextBtn.disabled = true;
+        }
+
+        function restartExam() {
+            initExam();
+        }
+
+        function startExam() {
+            startScreenDiv.classList.add("hidden");
+            quizInterfaceDiv.classList.remove("hidden");
+            quizActive = true;
+            startQuotes();
+            initExam();
+        }
+
+        startBtn.addEventListener("click", startExam);
+        checkBtn.addEventListener("click", checkAnswer);
+        nextBtn.addEventListener("click", nextQuestion);
+        restartBtn.addEventListener("click", () => { restartExam(); reviewBlock.classList.add("hidden"); });
+        restartReviewBtn.addEventListener("click", () => { restartExam(); reviewBlock.classList.add("hidden"); });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                if (!quizActive && !startScreenDiv.classList.contains("hidden")) {
+                    startExam();
+                } else if (quizActive && !quizInterfaceDiv.classList.contains("hidden")) {
+                    if (userAnswers[currentIndex] === null) checkAnswer();
+                    else nextQuestion();
+                }
+            }
+        });
+
+        window.addEventListener("beforeunload", () => stopQuotes());
+    </script>
+</body>
+                  </html>
