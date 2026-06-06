@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>🇩🇪 Deutsch · Fragen 51–100 · Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #0a0a2a, #010018);
+            font-family: 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+            min-height: 100vh;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(219, 62, 140, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(155, 48, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 35, 149, 0.15) 0%, transparent 60%);
+        }
+        .star {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: starTwinkle 4s infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes starTwinkle {
+            0% { opacity: 0.1; transform: scale(0.6); }
+            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 6px #DB3E8C, 0 0 3px #9B30FF; }
+        }
+        .de-icon {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            opacity: 0.25;
+            animation: floatIcon 20s infinite alternate;
+        }
+        @keyframes floatIcon {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -25px); }
+        }
+        .brandenburg { top: 3%; left: 1%; animation-duration: 18s; }
+        .tv-tower { top: 12%; right: 2%; animation-duration: 22s; }
+        .pretzel { bottom: 8%; right: 3%; animation-duration: 24s; }
+        .beer { bottom: 12%; left: 3%; animation-duration: 20s; }
+        .quiz-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(5, 5, 25, 0.7);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            padding: 1.2rem;
+            border: 1px solid rgba(219, 62, 140, 0.6);
+            box-shadow: 0 0 30px rgba(155, 48, 255, 0.3);
+            z-index: 10;
+        }
+        h1 {
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            background: linear-gradient(135deg, #DB3E8C, #9B30FF, #0A2F8A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .total-badge {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            color: #FFAFEB;
+            border: 1px solid #DB3E8C;
+        }
+        .quote-box {
+            background: rgba(26, 26, 46, 0.6);
+            border-left: 5px solid #DB3E8C;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1rem;
+            margin: 0.8rem 0;
+            text-align: center;
+            font-style: italic;
+            color: #FFE6F0;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .rules {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 1.2rem;
+            padding: 0.5rem 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            color: #FFAFEB;
+            border: 1px solid #9B30FF;
+        }
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+        .stat {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            font-weight: bold;
+            border: 1px solid #9B30FF;
+            color: #ffffff;
+        }
+        .progress-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .progress-bar-bg {
+            flex: 1;
+            background: #1a1a3a;
+            height: 1rem;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #DB3E8C, #9B30FF, #0A2F8A);
+            transition: width 0.3s;
+        }
+        .progress-text {
+            background: #00000066;
+            padding: 0.1rem 0.6rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            color: #F6C45C;
+        }
+        .question-card {
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            border: 1px solid #9B30FF;
+        }
+        .question-text {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.8rem;
+            border-radius: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px #9B30FF;
+            word-break: break-word;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+        .option {
+            background: rgba(26, 26, 62, 0.8);
+            border: 1px solid #9B30FF;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: 0.1s;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .option.selected {
+            background: rgba(219, 62, 140, 0.5);
+            border-color: #F6C45C;
+            box-shadow: 0 0 12px #DB3E8C;
+        }
+        .feedback {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 1.5rem;
+            padding: 0.6rem;
+            margin: 0.8rem 0;
+            text-align: center;
+            border-left: 5px solid #DB3E8C;
+            color: #FFAFEB;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .button-group {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0.6rem;
+        }
+        .btn {
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(95deg, #0A2F8A, #9B30FF);
+            color: white;
+            transition: 0.1s;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        .btn-primary {
+            background: linear-gradient(95deg, #DB3E8C, #9B30FF);
+            box-shadow: 0 0 12px #DB3E8C;
+        }
+        .restart-btn {
+            background: linear-gradient(95deg, #F6C45C, #0A2F8A);
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .review-section {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid #DB3E8C;
+        }
+        .mistake-item {
+            background: #1a173d;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 8px solid #DB3E8C;
+            color: #FFAFEB;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+        }
+        footer {
+            text-align: center;
+            font-size: clamp(0.65rem, 3vw, 0.75rem);
+            margin-top: 1rem;
+            color: #BBAAFF;
+        }
+        @media (max-width: 600px) {
+            .quiz-wrapper { padding: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="de-icon brandenburg">🏛️</div>
+    <div class="de-icon tv-tower">📡</div>
+    <div class="de-icon pretzel">🥨</div>
+    <div class="de-icon beer">🍺</div>
+    <script>
+        for (let i = 0; i < 150; i++) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+            let sz = Math.random() * 2.5 + 1;
+            star.style.width = sz + 'px';
+            star.style.height = sz + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = 3 + Math.random() * 4 + 's';
+            document.body.appendChild(star);
+        }
+    </script>
+    <div class="quiz-wrapper" id="app">
+        <div class="top-bar">
+            <h1>🇩🇪 Deutsch · Fragen 51–100</h1>
+            <span class="total-badge" id="totalSpan">📘 всего: 50</span>
+        </div>
+        <div class="quote-box" id="quoteBox">✨ Deutsch lernen – Berlin entdecken. ✨</div>
+        <div class="rules">
+            🚀 Правила: Выбери вариант, нажми Enter для проверки, ещё раз Enter – следующий вопрос. Кнопка «Перезапустить» – в любой момент.
+        </div>
+        <div id="startScreen" style="text-align:center; padding:1.5rem 0;">
+            <button class="btn btn-primary" id="startBtn" style="font-size:clamp(1.2rem, 5vw, 1.8rem);">🇩🇪 СТАРТ ТЕСТА ✨</button>
+        </div>
+        <div id="quizInterface" class="hidden">
+            <div class="stats-grid">
+                <div class="stat">✅ Верно: <span id="correctCount">0</span></div>
+                <div class="stat">❌ Ошибки: <span id="mistakeCount">0</span></div>
+                <div class="stat">🎯 Точность: <span id="accuracyPercent">0</span>%</div>
+                <div class="stat">📝 Отвечено: <span id="answeredCount">0</span></div>
+                <div class="stat">🌙 Осталось: <span id="remainingCount">50</span></div>
+            </div>
+            <div class="progress-area">
+                <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="progress-text" id="progressFraction">0/50</div>
+            </div>
+            <div class="question-card">
+                <div class="question-text" id="questionDisplay"></div>
+                <div class="options" id="optionsContainer"></div>
+                <div class="feedback" id="feedbackArea">✨ Выбери ответ → «Проверить» ✨</div>
+                <div class="button-group">
+                    <button class="btn btn-primary" id="checkBtn">✅ Проверить (Enter)</button>
+                    <button class="btn" id="nextBtn">➡ Следующий (Enter)</button>
+                </div>
+            </div>
+            <button class="btn restart-btn" id="restartBtn">🔄 Перезапустить тест</button>
+            <div id="reviewBlock" class="review-section hidden">
+                <h3 style="color:#DB3E8C;">📖 Разбор ошибок</h3>
+                <div id="mistakeList"></div>
+                <button class="btn restart-btn" id="restartReviewBtn">🔄 Пройти заново</button>
+            </div>
+        </div>
+        <footer>✨ красный · фиолетовый · синий ✨</footer>
+    </div>
+    <script>
+        const rawQuestions = [
+            { text: "Ich sehe ______ Lehrer.", options: ["sein", "mein", "meinen", "ihr"], correct: "meinen" },
+            { text: "Du kennst ______ Freundin.", options: ["mein", "deinen", "deine", "unsere"], correct: "deine" },
+            { text: "Er besucht ______ Eltern.", options: ["mein", "sein", "seine", "unsere"], correct: "seine" },
+            { text: "Sie liebt ______ Hund.", options: ["mein", "sein", "ihren", "dein"], correct: "ihren" },
+            { text: "Wir sehen ______ Stadt.", options: ["mein", "sein", "unsere", "eure"], correct: "unsere" },
+            { text: "Ihr kennt ______ Nachbarn.", options: ["mein", "sein", "eure", "unsere"], correct: "eure" },
+            { text: "Sie (Plural) besuchen ______ Freunde.", options: ["mein", "sein", "ihre", "deine"], correct: "ihre" },
+            { text: "Ich suche ______ Schlüssel.", options: ["sein", "dein", "meinen", "ihr"], correct: "meinen" },
+            { text: "Du liest ______ Buch.", options: ["mein", "sein", "dein", "ihr"], correct: "dein" },
+            { text: "Wir lieben ______ Land.", options: ["mein", "sein", "unser", "euer"], correct: "unser" },
+            { text: "Das Geschenk ist von ______.", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
+            { text: "Der Lehrer spricht mit ______.", options: ["du", "dir", "dich", "dein"], correct: "dir" },
+            { text: "Ich helfe ______. (sie – Singular)", options: ["sie", "ihr", "ihre", "ihn"], correct: "ihr" },
+            { text: "Der Brief ist von ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Der Lehrer erklärt die Aufgabe ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich gebe das Buch ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "unser"], correct: "euch" },
+            { text: "Der Lehrer hilft ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Paket gehört ______. (ich)", options: ["mich", "mir", "mein", "meine"], correct: "mir" },
+            { text: "Ich schreibe einen Brief an ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dich" },
+            { text: "Das Buch gehört ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
+            { text: "Der Arzt spricht mit ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Die Lehrerin gibt die Hausaufgabe ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich erkläre die Aufgabe ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "uns"], correct: "euch" },
+            { text: "Der Professor fragt ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Geschenk ist von ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dir" },
+            { text: "Der Lehrer hilft ______. (ich)", options: ["mich", "mir", "mein", "meine"], correct: "mir" },
+            { text: "Das Buch gehört ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Ich schreibe eine Nachricht an ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
+            { text: "Der Lehrer erklärt die Regel ______. (wir)", options: ["euch", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich schicke eine Einladung an ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "mir"], correct: "euch" },
+            { text: "Der Professor erzählt ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Buch gefällt ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dir" },
+            { text: "Das Geschenk gehört ______. (ich)", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
+            { text: "Die Lehrerin spricht mit ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Ich erkläre die Aufgabe ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
+            { text: "Der Lehrer hilft ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Ich schreibe eine Nachricht an ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "ihnen"], correct: "euch" },
+            { text: "Der Professor antwortet ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Das Geschenk ist von ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
+            { text: "Der Lehrer erklärt die Aufgabe ______. (ich)", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
+            { text: "Ich bleibe ______ zwei Tage in Berlin.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ dem Unterricht gehe ich nach Hause.", options: ["für", "vor", "nach", "mit"], correct: "nach" },
+            { text: "______ dem Essen trinke ich Kaffee.", options: ["nach", "vor", "für", "bei"], correct: "vor" },
+            { text: "Wir fahren ______ eine Woche nach Italien.", options: ["vor", "nach", "für", "mit"], correct: "für" },
+            { text: "______ der Arbeit treffe ich meine Freunde.", options: ["für", "vor", "nach", "bei"], correct: "nach" },
+            { text: "______ dem Frühstück gehe ich zur Universität.", options: ["nach", "vor", "für", "mit"], correct: "nach" },
+            { text: "Ich brauche das Buch ______ drei Tage.", options: ["nach", "vor", "für", "mit"], correct: "für" },
+            { text: "______ dem Film gehen wir essen.", options: ["für", "in", "nach", "bei"], correct: "nach" },
+            { text: "______ der Prüfung bin ich sehr nervös.", options: ["im", "vor", "für", "mit"], correct: "vor" },
+            { text: "Wir bleiben ______ einen Monat in Deutschland.", options: ["nach", "vor", "für", "bei"], correct: "für" }
+        ];
+        const total = rawQuestions.length;
+        document.getElementById("totalSpan").innerText = `📘 всего: ${total}`;
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function shuffleOptions(q) {
+            let shuffledOptions = shuffleArray([...q.options]);
+            return { text: q.text, options: shuffledOptions, correct: q.correct };
+        }
+        let questions = [];
+        let userAnswers = new Array(total).fill(null);
+        let currentIndex = 0;
+        let quizActive = false;
+        const startScreenDiv = document.getElementById("startScreen");
+        const quizInterfaceDiv = document.getElementById("quizInterface");
+        const startBtn = document.getElementById("startBtn");
+        const questionDisplay = document.getElementById("questionDisplay");
+        const optionsContainer = document.getElementById("optionsContainer");
+        const feedbackArea = document.getElementById("feedbackArea");
+        const checkBtn = document.getElementById("checkBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const restartBtn = document.getElementById("restartBtn");
+        const restartReviewBtn = document.getElementById("restartReviewBtn");
+        const reviewBlock = document.getElementById("reviewBlock");
+        const mistakeListDiv = document.getElementById("mistakeList");
+        const correctSpan = document.getElementById("correctCount");
+        const mistakeSpan = document.getElementById("mistakeCount");
+        const accuracySpan = document.getElementById("accuracyPercent");
+        const answeredSpan = document.getElementById("answeredCount");
+        const remainingSpan = document.getElementById("remainingCount");
+        const progressFill = document.getElementById("progressFill");
+        const progressFraction = document.getElementById("progressFraction");
+        let quoteInterval = null;
+        const quotes = [
+            "✨ Deutsch lernen – die Welt verstehen.",
+            "📖 Jede richtige Antwort bringt dich nach Berlin.",
+            "💪 Du schaffst das, du bist klug!",
+            "🎓 Lerne bunt, lebe wie in Berlin.",
+            "🏛️ Das Brandenburger Tor wartet auf dich!"
+        ];
+        function updateQuote() {
+            const idx = Math.floor(Math.random() * quotes.length);
+            const qb = document.getElementById("quoteBox");
+            if (qb) qb.innerHTML = `✨ ${quotes[idx]} ✨`;
+        }
+        function startQuotes() { if (quoteInterval) clearInterval(quoteInterval); updateQuote(); quoteInterval = setInterval(updateQuote, 12000); }
+        function stopQuotes() { if (quoteInterval) clearInterval(quoteInterval); }
+        function computeStats() {
+            let correct = 0, wrong = 0, answered = 0;
+            for (let i = 0; i < total; i++) {
+                if (userAnswers[i] !== null) {
+                    answered++;
+                    if (userAnswers[i].isCorrect) correct++;
+                    else wrong++;
+                }
+            }
+            const acc = answered === 0 ? 0 : Math.round((correct / answered) * 100);
+            correctSpan.innerText = correct;
+            mistakeSpan.innerText = wrong;
+            accuracySpan.innerText = acc;
+            answeredSpan.innerText = answered;
+            remainingSpan.innerText = total - answered;
+            const percent = (answered / total) * 100;
+            progressFill.style.width = percent + "%";
+            progressFraction.innerText = `${answered}/${total}`;
+        }
+        function renderCurrentQuestion() {
+            if (!quizActive) return;
+            const q = questions[currentIndex];
+            questionDisplay.innerText = q.text;
+            optionsContainer.innerHTML = "";
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement("div");
+                div.className = "option";
+                div.innerHTML = `<span style="font-weight:bold; margin-right:12px;">${letters[idx]}.</span> ${opt}`;
+                div.onclick = () => {
+                    if (userAnswers[currentIndex] !== null) {
+                        feedbackArea.innerHTML = "⚠️ Ты уже ответил на этот вопрос.";
+                        return;
+                    }
+                    document.querySelectorAll(".option").forEach(el => el.classList.remove("selected"));
+                    div.classList.add("selected");
+                    window._tempSelectedOption = opt;
+                };
+                optionsContainer.appendChild(div);
+            });
+            if (userAnswers[currentIndex] !== null) {
+                const saved = userAnswers[currentIndex];
+                document.querySelectorAll(".option").forEach(el => {
+                    el.style.pointerEvents = "none";
+                    if (el.innerText.includes(saved.selected)) el.classList.add("selected");
+                });
+                feedbackArea.innerHTML = saved.isCorrect ? `✅ Верно: ${saved.selected}` : `❌ Неверно. Правильно: ${questions[currentIndex].correct}`;
+                checkBtn.disabled = true;
+            } else {
+                document.querySelectorAll(".option").forEach(el => el.style.pointerEvents = "auto");
+                feedbackArea.innerHTML = "✨ Выбери ответ → «Проверить»";
+                checkBtn.disabled = false;
+            }
+            computeStats();
+        }
+        function checkAnswer() {
+            if (!quizActive) return;
+            if (userAnswers[currentIndex] !== null) { feedbackArea.innerHTML = "Уже отвечено"; return; }
+            const selected = window._tempSelectedOption;
+            if (!selected) { feedbackArea.innerHTML = "⚠️ Выбери вариант!"; return; }
+            const currentQ = questions[currentIndex];
+            const isCorrect = (selected === currentQ.correct);
+            userAnswers[currentIndex] = { selected, isCorrect };
+            renderCurrentQuestion();
+            computeStats();
+        }
+        function nextQuestion() {
+            if (!quizActive) return;
+            if (userAnswers[currentIndex] === null) { feedbackArea.innerHTML = "⚠️ Сначала ответь на вопрос."; return; }
+            if (currentIndex + 1 < total) {
+                currentIndex++;
+                window._tempSelectedOption = null;
+                renderCurrentQuestion();
+            } else {
+                feedbackArea.innerHTML = "🎉 Тест пройден! Смотри ошибки ниже.";
+                reviewBlock.classList.remove("hidden");
+                let mistakesHtml = "";
+                for (let i=0; i<total; i++) {
+                    if (userAnswers[i] !== null && !userAnswers[i].isCorrect) {
+                        mistakesHtml += `<div class="mistake-item"><strong>❓ Вопрос ${i+1}:</strong> ${questions[i].text}<br>👉 Твой ответ: ${userAnswers[i].selected}<br>✅ Правильный: ${questions[i].correct}</div>`;
+                    } else if (userAnswers[i] === null) {
+                        mistakesHtml += `<div class="mistake-item"><strong>❓ Вопрос ${i+1}:</strong> ${questions[i].text}<br>👉 Не отвечен<br>✅ Правильный: ${questions[i].correct}</div>`;
+                    }
+                }
+                if (mistakesHtml === "") mistakesHtml = "<p>✨ Идеально! Нет ошибок ✨</p>";
+                mistakeListDiv.innerHTML = mistakesHtml;
+            }
+        }
+        function restartQuiz() {
+            let shuffledRaw = shuffleArray([...rawQuestions]);
+            questions = shuffledRaw.map(q => shuffleOptions(q));
+            userAnswers.fill(null);
+            currentIndex = 0;
+            window._tempSelectedOption = null;
+            reviewBlock.classList.add("hidden");
+            renderCurrentQuestion();
+            computeStats();
+        }
+        function startQuiz() {
+            startScreenDiv.classList.add("hidden");
+            quizInterfaceDiv.classList.remove("hidden");
+            quizActive = true;
+            startQuotes();
+            restartQuiz();
+        }
+        startBtn.addEventListener("click", startQuiz);
+        checkBtn.addEventListener("click", checkAnswer);
+        nextBtn.addEventListener("click", nextQuestion);
+        restartBtn.addEventListener("click", restartQuiz);
+        restartReviewBtn.addEventListener("click", () => { restartQuiz(); reviewBlock.classList.add("hidden"); });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                if (!quizActive && !startScreenDiv.classList.contains("hidden")) startQuiz();
+                else if (quizActive && !quizInterfaceDiv.classList.contains("hidden")) {
+                    if (userAnswers[currentIndex] === null) checkAnswer();
+                    else nextQuestion();
+                }
+            }
+        });
+        window.addEventListener("beforeunload", () => stopQuotes());
+    </script>
+</body>
+                                               </html>
