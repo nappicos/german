@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>🇩🇪 Deutsch · Fragen 1–50 · Test</title>
+    <title>🇩🇪 Deutsch · Fragen 1–50 · Korrigiert</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -285,7 +285,7 @@
     </script>
     <div class="quiz-wrapper" id="app">
         <div class="top-bar">
-            <h1>🇩🇪 Deutsch · Fragen 1–50</h1>
+            <h1>🇩🇪 Deutsch · Fragen 1–50 · Korrigiert</h1>
             <span class="total-badge" id="totalSpan">📘 всего: 50</span>
         </div>
         <div class="quote-box" id="quoteBox">✨ Deutsch lernen – Berlin entdecken. ✨</div>
@@ -310,7 +310,7 @@
             <div class="question-card">
                 <div class="question-text" id="questionDisplay"></div>
                 <div class="options" id="optionsContainer"></div>
-                <div class="feedback" id="feedbackArea">✨ Выбери ответ → «Проверить» ✨</div>
+                <div class="feedback" id="feedbackArea">✨ Выбери ответ и нажми «Проверить» ✨</div>
                 <div class="button-group">
                     <button class="btn btn-primary" id="checkBtn">✅ Проверить (Enter)</button>
                     <button class="btn" id="nextBtn">➡ Следующий (Enter)</button>
@@ -326,6 +326,7 @@
         <footer>✨ красный · фиолетовый · синий ✨</footer>
     </div>
     <script>
+        // Вопросы 1–50, извлечённые из сообщения пользователя (правильные отмечены #)
         const rawQuestions = [
             { text: "Der Hund liegt ______ dem Tisch.", options: ["unter", "auf", "oben", "ans"], correct: "unter" },
             { text: "Das Buch liegt ______ dem Tisch.", options: ["auf", "im", "zwischen", "oben"], correct: "auf" },
@@ -552,4 +553,4 @@
         window.addEventListener("beforeunload", () => stopQuotes());
     </script>
 </body>
-  </html>
+</html>
