@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>🇩🇪 Deutsch · PRÜFUNG · 25 zufällige Fragen</title>
+    <title>🇩🇪 Deutsch · PRÜFUNG · 25 zufällige Fragen (aus 200)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -93,6 +93,13 @@
             font-size: clamp(0.7rem, 3vw, 0.9rem);
             color: #FFAFEB;
             border: 1px solid #DB3E8C;
+        }
+        .db-counter {
+            background: rgba(155, 48, 255, 0.5);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            color: #F6C45C;
         }
         .quote-box {
             background: rgba(26, 26, 46, 0.6);
@@ -286,12 +293,15 @@
     <div class="quiz-wrapper" id="app">
         <div class="top-bar">
             <h1>🇩🇪 PRÜFUNG · 25 zufällige Fragen</h1>
-            <span class="total-badge" id="totalSpan">📘 всего: 25</span>
+            <div style="display: flex; gap: 0.5rem;">
+                <span class="total-badge" id="totalSpan">📘 heute: 25</span>
+                <span class="db-counter" id="dbCounter">📚 Datenbank: 200 Fragen</span>
+            </div>
         </div>
         <div class="quote-box" id="quoteBox">✨ Prüfung – Teste dein Wissen! ✨</div>
         <div class="rules">
             🚀 Правила: Выбери вариант, нажми Enter для проверки, ещё раз Enter – следующий вопрос. Кнопка «Перезапустить» – в любой момент.<br>
-            🎲 Каждый раз тест выбирает 25 случайных вопросов из всех 200.
+            🎲 Каждый раз тест выбирает 25 случайных вопросов из всех 200 (см. счётчик справа).
         </div>
         <div id="startScreen" style="text-align:center; padding:1.5rem 0;">
             <button class="btn btn-primary" id="startBtn" style="font-size:clamp(1.2rem, 5vw, 1.8rem);">🇩🇪 ПРЮФУНГ СТАРТЕН ✨</button>
@@ -311,7 +321,7 @@
             <div class="question-card">
                 <div class="question-text" id="questionDisplay"></div>
                 <div class="options" id="optionsContainer"></div>
-                <div class="feedback" id="feedbackArea">✨ Выбери ответ → «Проверить» ✨</div>
+                <div class="feedback" id="feedbackArea">✨ Выбери ответ и нажми «Проверить» ✨</div>
                 <div class="button-group">
                     <button class="btn btn-primary" id="checkBtn">✅ Проверить (Enter)</button>
                     <button class="btn" id="nextBtn">➡ Следующий (Enter)</button>
@@ -324,12 +334,11 @@
                 <button class="btn restart-btn" id="restartReviewBtn">🔄 Пройти заново</button>
             </div>
         </div>
-        <footer>✨ красный · фиолетовый · синий · 25 zufällige Fragen ✨</footer>
+        <footer>✨ красный · фиолетовый · синий · 25 zufällige Fragen aus 200 ✨</footer>
     </div>
     <script>
-        // =============== ВСЕ 200 ВОПРОСОВ ===============
+        // =============== ALLE 200 FRAGEN (aus der Benutzer-Nachricht mit #) ===============
         const allQuestions = [
-            // 1-50
             { text: "Der Hund liegt ______ dem Tisch.", options: ["unter", "auf", "oben", "ans"], correct: "unter" },
             { text: "Das Buch liegt ______ dem Tisch.", options: ["auf", "im", "zwischen", "oben"], correct: "auf" },
             { text: "Die Katze springt ______ den Tisch.", options: ["aufs", "auf", "an", "zwischen"], correct: "auf" },
@@ -380,7 +389,6 @@
             { text: "Sie hat ein Zimmer. ______ Zimmer ist groß.", options: ["ihre", "mein", "ihr", "dein"], correct: "ihr" },
             { text: "Wir haben einen Garten. ______ Garten ist schön.", options: ["mein", "unsere", "unser", "euer"], correct: "unser" },
             { text: "Ihr habt ein Auto. ______ Auto ist alt.", options: ["eure", "eurer", "euer", "unser"], correct: "euer" },
-            // 51-100
             { text: "Ich sehe ______ Lehrer.", options: ["sein", "mein", "meinen", "ihr"], correct: "meinen" },
             { text: "Du kennst ______ Freundin.", options: ["mein", "deinen", "deine", "unsere"], correct: "deine" },
             { text: "Er besucht ______ Eltern.", options: ["mein", "sein", "seine", "unsere"], correct: "seine" },
@@ -399,7 +407,7 @@
             { text: "Ich gebe das Buch ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "unser"], correct: "euch" },
             { text: "Der Lehrer hilft ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
             { text: "Das Paket gehört ______. (ich)", options: ["mich", "mir", "mein", "meine"], correct: "mir" },
-            { text: "Ich schreibe einen Brief an ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dich" },
+            { text: "Ich schreibe einen Brief an ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dir" },
             { text: "Das Buch gehört ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
             { text: "Der Arzt spricht mit ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
             { text: "Die Lehrerin gibt die Hausaufgabe ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
@@ -411,7 +419,7 @@
             { text: "Ich schreibe eine Nachricht an ______. (sie – Singular)", options: ["sie", "ihr", "ihn", "er"], correct: "ihr" },
             { text: "Der Lehrer erklärt die Regel ______. (wir)", options: ["euch", "uns", "unser", "unsere"], correct: "uns" },
             { text: "Ich schicke eine Einladung an ______. (ihr – Plural)", options: ["ihr", "euch", "euer", "mir"], correct: "euch" },
-            { text: "Der Professor erzählt ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
+            { text: "Der Professor erzahlt ______. (sie – Plural)", options: ["sie", "ihnen", "ihr", "ihre"], correct: "ihnen" },
             { text: "Das Buch gefällt ______. (du)", options: ["dich", "dir", "dein", "du"], correct: "dir" },
             { text: "Das Geschenk gehört ______. (ich)", options: ["mich", "mir", "mein", "ich"], correct: "mir" },
             { text: "Die Lehrerin spricht mit ______. (er)", options: ["ihn", "ihm", "sein", "er"], correct: "ihm" },
@@ -431,7 +439,6 @@
             { text: "______ dem Film gehen wir essen.", options: ["für", "in", "nach", "bei"], correct: "nach" },
             { text: "______ der Prüfung bin ich sehr nervös.", options: ["im", "vor", "für", "mit"], correct: "vor" },
             { text: "Wir bleiben ______ einen Monat in Deutschland.", options: ["nach", "vor", "für", "bei"], correct: "für" },
-            // 101-150
             { text: "______ der Schule mache ich Hausaufgaben.", options: ["für", "bei", "nach", "mit"], correct: "nach" },
             { text: "______ dem Konzert essen wir im Restaurant.", options: ["bei", "vor", "für", "mit"], correct: "vor" },
             { text: "Ich arbeite hier ______ zwei Jahre.", options: ["nach", "vor", "für", "mit"], correct: "für" },
@@ -482,7 +489,6 @@
             { text: "Sie ______ gestern ihre Freunde besucht.", options: ["sind", "waren", "hat", "ist"], correct: "hat" },
             { text: "Ich ______ gestern sehr glücklich.", options: ["hatte", "war", "habe", "bin"], correct: "war" },
             { text: "Wir ______ gestern lange gearbeitet.", options: ["sind", "waren", "haben", "hatten"], correct: "haben" },
-            // 151-200
             { text: "Der Lehrer sieht ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
             { text: "Ich sehe ______. (du)", options: ["dir", "dich", "du", "dein"], correct: "dich" },
             { text: "Sie kennt ______. (er)", options: ["ihm", "ihn", "sein", "er"], correct: "ihn" },
@@ -490,13 +496,13 @@
             { text: "Wir besuchen ______. (sie – Singular)", options: ["ihr", "sie", "ihnen", "er"], correct: "sie" },
             { text: "Der Lehrer fragt ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
             { text: "Ich sehe ______ im Park. (ihr – Plural)", options: ["ihr", "euch", "euer", "eure"], correct: "euch" },
-            { text: "Der Lehrer grüßt ______. (sie – Plural)", options: ["ihr", "sie", "ihnen", "sie"], correct: "sie" },
+            { text: "Der Lehrer grusst ______. (sie – Plural)", options: ["ihr", "sie", "ihnen", "sie"], correct: "sie" },
             { text: "Sie liebt ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
             { text: "Ich höre ______. (du)", options: ["dir", "dich", "du", "dein"], correct: "dich" },
             { text: "Wir treffen ______. (er)", options: ["ihm", "ihn", "sein", "er"], correct: "ihn" },
             { text: "Ich sehe ______. (das Auto)", options: ["sie", "es", "ihn", "mich"], correct: "es" },
             { text: "Er ruft ______. (sie – Singular)", options: ["ihr", "sie", "ihnen", "er"], correct: "sie" },
-            { text: "Der Lehrer erzählt ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
+            { text: "Der Lehrer erzahlt ______. (wir)", options: ["wir", "uns", "unser", "unsere"], correct: "uns" },
             { text: "Ich treffe ______ morgen. (ihr – Plural)", options: ["ihr", "euch", "euer", "eure"], correct: "euch" },
             { text: "Wir besuchen ______ heute. (sie – Plural)", options: ["ihr", "sie", "ihnen", "sie"], correct: "sie" },
             { text: "Er liebt ______. (ich)", options: ["mir", "mich", "mein", "ich"], correct: "mich" },
@@ -563,6 +569,10 @@
         const progressFraction = document.getElementById("progressFraction");
         const totalSpan = document.getElementById("totalSpan");
         const quoteBox = document.getElementById("quoteBox");
+        const dbCounter = document.getElementById("dbCounter");
+
+        // set total database counter
+        dbCounter.innerText = `📚 Datenbank: ${allQuestions.length} Fragen`;
 
         const quotes = [
             "✨ Deutsch lernen – die Welt verstehen.",
@@ -629,7 +639,7 @@
             accuracySpan.innerText = accuracy;
             answeredSpan.innerText = answeredCount;
             remainingSpan.innerText = examQuestions.length - answeredCount;
-            totalSpan.innerText = `📘 всего: ${examQuestions.length}`;
+            totalSpan.innerText = `📘 heute: ${examQuestions.length}`;
             const percent = (answeredCount / examQuestions.length) * 100;
             progressFill.style.width = percent + "%";
             progressFraction.innerText = `${answeredCount}/${examQuestions.length}`;
@@ -769,4 +779,4 @@
         window.addEventListener("beforeunload", () => stopQuotes());
     </script>
 </body>
-                  </html>
+</html>
